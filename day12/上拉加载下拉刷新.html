@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0,
+           maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: pink;
+        }
+        .bottom{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background: pink;
+        }
+        .content{
+            width: 100%;
+            position: absolute;
+            top: 50px;
+            bottom: 50px;
+            background: gainsboro;
+            overflow: hidden;
+        }
+        .img{
+            width: 100px;
+            height: 30px;
+            margin-left: 150px;
+            display: none;
+        }
+        .img img{
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="top"></div>
+
+
+
+<div class="content">
+    <div class="rong">
+        <div class="img"><img src="1.gif"/></div>
+        <p class="p" style="display:none;text-align: center">刷新完成</p>
+        <p>我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+            我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅我好帅我就是好帅，我他妈的真帅
+        </p>
+        <ul>
+
+        </ul>
+        <div class="img1"><img src="1.gif"/></div>
+    </div>
+
+</div>
+
+
+
+<div class="bottom"></div>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script src="iscroll.js"></script>
+<script>
+    var myscroll=new IScroll(".content",{
+        scrollbars:false,
+        mouseWheel:true,
+        interacriveScrollbars:true,
+        shrinkScrollbars:"scale",
+        click:true
+    });
+    var call;
+    $(".content").on("touchmove",function(){
+//        alert(1);
+        if(myscroll.y<69&&myscroll.y>30){
+          $(".img").css("display","block");
+            call=false;
+        }else if(myscroll.y>70){
+            call=true;
+        }
+    })
+    $(".content").on("touchend",function(){
+        if(call){
+            $(".img").css("display","none")
+            $(".p").css("display","block")
+            setTimeout(function(){
+                $(".p").css("display","none")
+            },1000)
+        }
+    })
+    myscroll.on("scrollEnd",function(){
+        var str="";
+//        alert(1)
+        if(myscroll.y==myscroll.maxScrollY){
+            $(".img1").css("display","block");
+            setTimeout(function(){
+                $(".img1").css("display","none");
+            },1000)
+            for(var i= 0; i<=10; i++){
+                str+="<li>我是"+i+"<li>"
+            }
+            $("ul").append(str);
+        }
+        myscroll.refresh();
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
